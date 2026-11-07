@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ميد طفيليات</title>
+<meta name="description" content="اختبارات اختيار من متعدد لمحاضرات الطفيليات: 10 أسئلة لكل محاضرة مع النتيجة والإجابات الصحيحة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6c11 0 15 7 21 12s6 15 1 22-6 16-20 18S10 54 8 42s1-18 6-25S21 6 32 6z' fill='%231f4e79'/%3E%3Ccircle cx='34' cy='32' r='9' fill='%23fff'/%3E%3Ccircle cx='34' cy='32' r='3' fill='%231f4e79'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f5f3ee;
+    --surface: #ffffff;
+    --surface-2: #faf8f4;
+    --ink: #1b1d20;
+    --muted: #5c616a;
+    --line: #e2ddd2;
+    --brand: #1f4e79;
+    --brand-ink: #ffffff;
+    --brand-soft: #e5edf5;
+    --ok: #176e43;
+    --ok-soft: #e3f2e9;
+    --bad: #b42318;
+    --bad-soft: #fbe8e6;
+    --shadow: 0 1px 2px rgba(20, 24, 30, .06), 0 4px 14px rgba(20, 24, 30, .05);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111315;
+      --surface: #1a1d21;
+      --surface-2: #16191c;
+      --ink: #eceef0;
+      --muted: #9ba2aa;
+      --line: #2b3036;
+      --brand: #84b6e6;
+      --brand-ink: #0c1a28;
+      --brand-soft: #1b2836;
+      --ok: #4fca88;
+      --ok-soft: #15301f;
+      --bad: #f2806f;
+      --bad-soft: #3a1d19;
+      --shadow: none;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111315;
+    --surface: #1a1d21;
+    --surface-2: #16191c;
+    --ink: #eceef0;
+    --muted: #9ba2aa;
+    --line: #2b3036;
+    --brand: #84b6e6;
+    --brand-ink: #0c1a28;
+    --brand-soft: #1b2836;
+    --ok: #4fca88;
+    --ok-soft: #15301f;
+    --bad: #f2806f;
+    --bad-soft: #3a1d19;
+    --shadow: none;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  button { font: inherit; color: inherit; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+  /* Header */
+  .top {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .top .wrap { display: flex; align-items: center; gap: 12px; padding-top: 14px; padding-bottom: 14px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  .brand svg { width: 34px; height: 34px; flex: none; }
+  .brand b { font-size: 1.25rem; font-weight: 700; letter-spacing: -.01em; }
+  .brand small { display: block; font-size: .8rem; color: var(--muted); font-weight: 400; margin-top: -2px; }
+
+  main { padding: 24px 0 56px; }
+
+  /* Home */
+  .intro h1 { font-size: 1.6rem; line-height: 1.3; margin: 0 0 6px; font-weight: 700; }
+  .intro p { margin: 0 0 22px; color: var(--muted); }
+  .group-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: .95rem; font-weight: 600; color: var(--muted);
+    margin: 26px 0 10px;
+  }
+  .group-title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .grid { display: grid; gap: 10px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .card {
+    display: flex; flex-direction: column; gap: 6px;
+    text-align: right;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: border-color .15s, transform .15s;
+  }
+  .card:hover { border-color: var(--brand); }
+  .card:active { transform: scale(.99); }
+  .card:focus-visible, .opt:focus-visible, .btn:focus-visible, .dot:focus-visible, .brand:focus-visible {
+    outline: 3px solid var(--brand); outline-offset: 2px;
+  }
+  .card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .tag {
+    font-size: .78rem; font-weight: 600;
+    background: var(--brand-soft); color: var(--brand);
+    padding: 2px 10px; border-radius: 999px;
+  }
+  .best { font-size: .78rem; color: var(--muted); }
+  .best b { color: var(--ink); }
+  .card-title { font-weight: 600; font-size: 1.05rem; line-height: 1.35; }
+  .card-desc { color: var(--muted); font-size: .9rem; line-height: 1.5; }
+  .en { direction: ltr; unicode-bidi: isolate; }
+  .card-title.en { text-align: right; }
+
+  /* Quiz */
+  .quiz-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+  .quiz-head .lec { min-width: 0; }
+  .quiz-head .lec .tag { display: inline-block; margin-bottom: 4px; }
+  .quiz-head .lec div { font-weight: 600; line-height: 1.35; }
+  .link-btn {
+    background: none; border: 1px solid var(--line); border-radius: 10px;
+    padding: 6px 12px; cursor: pointer; color: var(--muted); font-size: .9rem; white-space: nowrap;
+  }
+  .link-btn:hover { color: var(--ink); border-color: var(--muted); }
+  .progress { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin: 6px 0 12px; }
+  .progress > span { display: block; height: 100%; background: var(--brand); border-radius: 999px; transition: width .25s; }
+  .meta { display: flex; justify-content: space-between; font-size: .88rem; color: var(--muted); }
+  .dots { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; margin: 4px 0 16px; max-width: 420px; }
+  .dot {
+    width: 100%; aspect-ratio: 1; border-radius: 50%;
+    border: 1.5px solid var(--line); background: var(--surface);
+    font-size: .82rem; font-weight: 600; cursor: pointer; color: var(--muted);
+    display: grid; place-items: center; padding: 0;
+  }
+  .dot.done { background: var(--brand-soft); border-color: var(--brand-soft); color: var(--brand); }
+  .dot.cur { border-color: var(--brand); color: var(--brand); }
+
+  .qcard {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+    padding: 20px 18px; box-shadow: var(--shadow);
+  }
+  .qtext { font-size: 1.12rem; font-weight: 600; line-height: 1.5; margin: 0 0 16px; text-align: left; }
+  .opts { display: grid; gap: 10px; }
+  .opt {
+    display: flex; align-items: flex-start; gap: 12px; width: 100%;
+    text-align: left; direction: ltr;
+    background: var(--surface-2); border: 1.5px solid var(--line); border-radius: 12px;
+    padding: 12px 14px; cursor: pointer; line-height: 1.45;
+    transition: border-color .12s, background .12s;
+  }
+  .opt:hover { border-color: var(--muted); }
+  .opt .letter {
+    flex: none; width: 26px; height: 26px; border-radius: 8px;
+    display: grid; place-items: center; font-size: .82rem; font-weight: 700;
+    background: var(--surface); border: 1px solid var(--line); color: var(--muted);
+  }
+  .opt[aria-pressed="true"] { border-color: var(--brand); background: var(--brand-soft); }
+  .opt[aria-pressed="true"] .letter { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+
+  .nav { display: flex; gap: 10px; margin-top: 16px; }
+  .btn {
+    flex: 1; border-radius: 12px; padding: 12px 16px; cursor: pointer;
+    font-weight: 600; border: 1.5px solid var(--line); background: var(--surface);
+  }
+  .btn:disabled { opacity: .45; cursor: not-allowed; }
+  .btn.primary { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+  .submit-row { margin-top: 12px; }
+  .submit-row .btn { width: 100%; }
+  .hint { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 8px; }
+
+  /* Results */
+  .score-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+    padding: 22px 18px; box-shadow: var(--shadow);
+    display: flex; align-items: center; gap: 18px;
+  }
+  .ring {
+    --p: 0;
+    flex: none; width: 104px; height: 104px; border-radius: 50%;
+    background: conic-gradient(var(--ring-color, var(--brand)) calc(var(--p) * 1%), var(--line) 0);
+    display: grid; place-items: center;
+  }
+  .ring > div {
+    width: 82px; height: 82px; border-radius: 50%; background: var(--surface);
+    display: grid; place-items: center; text-align: center; line-height: 1.1;
+  }
+  .ring b { font-size: 1.7rem; direction: ltr; }
+  .ring small { display: block; color: var(--muted); font-size: .8rem; }
+  .score-text h2 { margin: 0 0 4px; font-size: 1.3rem; line-height: 1.35; }
+  .score-text p { margin: 0; color: var(--muted); }
+  .res-actions { display: flex; gap: 10px; margin: 14px 0 22px; }
+  .filter { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .chip {
+    border: 1.5px solid var(--line); background: var(--surface); border-radius: 999px;
+    padding: 5px 14px; cursor: pointer; font-size: .88rem; font-weight: 500;
+  }
+  .chip[aria-pressed="true"] { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); }
+
+  .review { display: grid; gap: 12px; }
+  .ritem {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px; border-inline-start: 4px solid var(--ok);
+  }
+  .ritem.wrong { border-inline-start-color: var(--bad); }
+  .rhead { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: .85rem; font-weight: 600; }
+  .badge { padding: 1px 10px; border-radius: 999px; }
+  .badge.ok { background: var(--ok-soft); color: var(--ok); }
+  .badge.bad { background: var(--bad-soft); color: var(--bad); }
+  .rq { font-weight: 600; text-align: left; margin: 0 0 10px; line-height: 1.5; }
+  .rlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; direction: ltr; }
+  .rlist li {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 8px 10px; border-radius: 10px; border: 1px solid transparent; line-height: 1.45; font-size: .95rem;
+  }
+  .rlist li .mk { flex: none; width: 20px; text-align: center; font-weight: 700; }
+  .rlist li.correct { background: var(--ok-soft); border-color: transparent; color: var(--ok); font-weight: 600; }
+  .rlist li.picked-wrong { background: var(--bad-soft); color: var(--bad); }
+  .rlist li.picked-wrong .txt { text-decoration: line-through; text-decoration-thickness: 1px; }
+  .rlist li.plain { color: var(--muted); }
+  .rlist li .who { margin-left: auto; font-size: .78rem; font-weight: 600; white-space: nowrap; text-decoration: none; direction: rtl; }
+  .ex {
+    margin-top: 10px; padding: 10px 12px; border-radius: 10px;
+    background: var(--surface-2); border: 1px dashed var(--line);
+    font-size: .92rem; text-align: left; direction: ltr; color: var(--ink);
+  }
+  .ex b { color: var(--brand); }
+  .empty { text-align: center; color: var(--muted); padding: 24px 0; }
+
+  footer { color: var(--muted); font-size: .82rem; text-align: center; padding: 0 0 28px; }
+
+  [hidden] { display: none !important; }
+  @media (max-width: 420px) {
+    .qtext { font-size: 1.05rem; }
+    .score-card { gap: 14px; padding: 18px 14px; }
+    .ring { width: 92px; height: 92px; }
+    .ring > div { width: 72px; height: 72px; }
+    .ring b { font-size: 1.45rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <button class="brand" id="homeBtn" type="button" aria-label="الصفحة الرئيسية">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 6c11 0 15 7 21 12s6 15 1 22-6 16-20 18S10 54 8 42s1-18 6-25S21 6 32 6z" fill="var(--brand)"/>
+        <circle cx="34" cy="32" r="9" fill="var(--surface)"/>
+        <circle cx="34" cy="32" r="3" fill="var(--brand)"/>
+        <circle cx="20" cy="22" r="2.5" fill="var(--surface)" opacity=".7"/>
+        <circle cx="46" cy="44" r="2" fill="var(--surface)" opacity=".7"/>
+      </svg>
+      <span><b>ميد طفيليات</b><small>Medical Parasitology Quiz</small></span>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- Home -->
+  <section id="home">
+    <div class="intro">
+      <h1>اختبر نفسك في محاضرات الطفيليات</h1>
+      <p>اختر محاضرة، وأجب عن 10 أسئلة. بعد إنهاء كل الأسئلة تظهر نتيجتك مع الإجابات الصحيحة وتوضيح لكل سؤال.</p>
+    </div>
+    <div class="group-title">النظري</div>
+    <div class="grid" id="grid-theory"></div>
+    <div class="group-title">العملي</div>
+    <div class="grid" id="grid-lab"></div>
+  </section>
+
+  <!-- Quiz -->
+  <section id="quiz" hidden>
+    <div class="quiz-head">
+      <div class="lec">
+        <span class="tag" id="qTag"></span>
+        <div class="en" id="qTitle"></div>
+      </div>
+      <button class="link-btn" type="button" id="quitBtn">المحاضرات</button>
+    </div>
+    <div class="meta"><span id="qCount"></span><span id="qAnswered"></span></div>
+    <div class="progress"><span id="qBar" style="width:0%"></span></div>
+    <div class="dots" id="dots" aria-label="التنقل بين الأسئلة"></div>
+
+    <div class="qcard">
+      <p class="qtext en" id="qText" lang="en"></p>
+      <div class="opts" id="opts" role="group" aria-labelledby="qText"></div>
+    </div>
+
+    <div class="nav">
+      <button class="btn" type="button" id="prevBtn">السابق</button>
+      <button class="btn" type="button" id="nextBtn">التالي</button>
+    </div>
+    <div class="submit-row">
+      <button class="btn primary" type="button" id="submitBtn" disabled>عرض النتيجة</button>
+      <div class="hint" id="submitHint"></div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section id="result" hidden>
+    <div class="quiz-head">
+      <div class="lec">
+        <span class="tag" id="rTag"></span>
+        <div class="en" id="rTitle"></div>
+      </div>
+    </div>
+    <div class="score-card">
+      <div class="ring" id="ring"><div><span><b id="rScore"></b><small id="rPct"></small></span></div></div>
+      <div class="score-text">
+        <h2 id="rMsg"></h2>
+        <p id="rSub"></p>
+      </div>
+    </div>
+    <div class="res-actions">
+      <button class="btn primary" type="button" id="retryBtn">أعد الاختبار</button>
+      <button class="btn" type="button" id="backBtn">محاضرة أخرى</button>
+    </div>
+    <div class="filter" role="group" aria-label="تصفية المراجعة">
+      <button class="chip" type="button" data-f="all" aria-pressed="true">كل الأسئلة</button>
+      <button class="chip" type="button" data-f="wrong" aria-pressed="false" id="chipWrong">الأخطاء فقط</button>
+    </div>
+    <div class="review" id="review"></div>
+  </section>
+</main>
+
+<footer class="wrap">الأسئلة مبنية على محتوى المحاضرات السبع (نظري م3، م4، م5 — عملي م1، م2، م3، م5)</footer>
+
+<script type="application/json" id="quiz-data">
+[
+  {
+    "id": "l3", "group": "theory", "tag": "نظري م3",
+    "title": "Infection, Diagnosis & Treatment",
+    "desc": "تصنيف العدوى، استراتيجيات الطفيلي، طرق التشخيص، العلاج",
+    "questions": [
+      {"q": "Cross infection occurring in hospital is called:",
+       "o": ["Nosocomial infection", "Focal infection", "Secondary infection", "Subclinical infection"],
+       "e": "Nosocomial infection = cross infection occurring in hospital. Cross infection = a patient already suffering from a disease gets a new infection from another host or an external source."},
+      {"q": "A condition due to infection at localized sites like the appendix and tonsil is:",
+       "o": ["Focal infection", "Primary infection", "Cross infection", "Reinfection"],
+       "e": "Focal infection is infection at localized sites like the appendix and tonsil."},
+      {"q": "In a host whose resistance is lowered by a preexisting infectious disease, a new organism sets up infection. This is:",
+       "o": ["Secondary infection", "Reinfection", "Cross infection", "Primary infection"],
+       "e": "Secondary infection = a NEW organism in a host with lowered resistance. Reinfection = subsequent infection by the SAME organism."},
+      {"q": "Which parasite strategy uses molecular mimicry or camouflage to avoid detection by the host's immune system?",
+       "o": ["Evasion", "Adaptation", "Exploitation", "Invasion and localization"],
+       "e": "The 4 strategies: Invasion and localization, Exploitation, Evasion (molecular mimicry, camouflage), Adaptation."},
+      {"q": "The parasite takes advantage of the host's resources, such as food, which can lead to diseases like anemia. This strategy is:",
+       "o": ["Exploitation", "Evasion", "Adaptation", "Invasion and localization"],
+       "e": "Exploitation: the parasite uses the host's resources (food), depleting its nutrition and leading to diseases like anemia."},
+      {"q": "Immunodiagnostic techniques use serum to detect antigen and antibody by:",
+       "o": ["ELISA", "PCR", "Xenodiagnosis", "Endoscopy"],
+       "e": "Immunodiagnosis: ELISA (antigen and antibody). Molecular: PCR (parasite DNA). Imaging: endoscopy, X-ray, MRI."},
+      {"q": "Xenodiagnosis is a method that:",
+       "o": ["Employs an intermediate host or vector, in which the parasite multiplies, to detect a low level of parasitism", "Inoculates laboratory animals with the patient's specimen", "Grows the parasite on artificial culture media", "Detects the parasite's DNA by nucleic acid amplification"],
+       "e": "Xenodiagnosis employs an intermediate host or vector, within which the parasite multiplies, to detect a low level of parasitism."},
+      {"q": "Which group of parasites can be diagnosed by animal inoculation?",
+       "o": ["Leishmania donovani, Toxoplasma gondii, Babesia", "Trypanosoma cruzi, Sarcocystis", "E. histolytica, Balantidium coli, Onchocerca", "Schistosoma, Trichinella"],
+       "e": "Animal inoculation: L. donovani, T. gondii, Babesia. Histopathology: T. cruzi, Sarcocystis. Culture: E. histolytica, Leishmania, B. coli, Schistosoma, Trichinella, Onchocerca."},
+      {"q": "Tissue cysts due to Trypanosoma cruzi and Sarcocystis are easily demonstrated by:",
+       "o": ["Histopathology (stained tissue section)", "Culture", "Xenodiagnosis", "Animal inoculation"],
+       "e": "Histopathology: tissue cysts of T. cruzi and Sarcocystis are easily demonstrated in stained tissue sections."},
+      {"q": "The drug of choice for the entire spectrum of symptoms is:",
+       "o": ["Metronidazole (Flagyl) or tinidazole", "Paromomycin", "Iodoquinol", "Chloroquine"],
+       "e": "Drug of choice: metronidazole (Flagyl) or tinidazole. Treatment goals: destroy trophozoites, relieve symptoms, control and prevent secondary bacterial infection."}
+    ]
+  },
+  {
+    "id": "l4", "group": "theory", "tag": "نظري م4",
+    "title": "Effect of Parasites on the Host",
+    "desc": "التأثير المباشر وغير المباشر، تلف الأنسجة، تغيرات الأنسجة، مقدمة الأميبا",
+    "questions": [
+      {"q": "A hydatid cyst causing blockage of ducts such as blood vessels, by pressure as it grows larger, is an example of:",
+       "o": ["Mechanical injury", "Deleterious effect of toxic substances", "Deprivation of nutrients", "Immunological reaction"],
+       "e": "Mechanical injury is inflicted by pressure as the parasite grows larger, e.g. hydatid cyst (often in liver and lungs)."},
+      {"q": "Production of toxic substances that may cause rigors and other symptoms is seen in:",
+       "o": ["Plasmodium falciparum", "Plasmodium vivax", "Fasciola hepatica", "Trichinella spiralis"],
+       "e": "Deleterious effect of toxic substances: in P. falciparum, toxic substances may cause rigors and other symptoms."},
+      {"q": "Nephritic syndrome following Plasmodium infection is an example of:",
+       "o": ["Immunological reaction (indirect effect)", "Mechanical injury (direct effect)", "Toxic substances (direct effect)", "Deprivation of nutrients (direct effect)"],
+       "e": "Direct effects: mechanical injury, toxic substances, deprivation of nutrients. Indirect effect: immunological reaction, e.g. nephritic syndrome after Plasmodium."},
+      {"q": "Swollen cells packed with albuminous or fatty granules, with indistinct nuclei and pale cytoplasm (seen in liver, cardiac muscle and kidney) describe:",
+       "o": ["Parenchymatous (albuminous) degeneration", "Fatty degeneration (yellowish cells)", "Necrosis (opaque dead tissue)", "Hypertrophy (cell enlargement)"],
+       "e": "Parenchymatous/albuminous degeneration. Fatty degeneration instead gives a yellowish color, common in parasite-laden liver cells."},
+      {"q": "Encystment and calcification of Trichinella spiralis larvae in mammalian skeletal muscle cells cause:",
+       "o": ["Necrosis of the surrounding tissue", "Fatty degeneration of the surrounding tissue", "Hyperplasia of the surrounding tissue", "Metaplasia of the surrounding tissue"],
+       "e": "Necrosis: persistent degeneration causes death of cells, giving tissue an opaque appearance, e.g. Trichinella spiralis."},
+      {"q": "Inflammation by Fasciola hepatica stimulating excessive division of the epithelial cells lining the bile duct, thickening its wall, is:",
+       "o": ["Hyperplasia", "Hypertrophy", "Metaplasia", "Neoplasia"],
+       "e": "Hyperplasia = cell proliferation by accelerated cell division, e.g. Fasciola hepatica in the bile duct."},
+      {"q": "Enlargement of parasitized red blood cells and the spleen in Plasmodium vivax infection is:",
+       "o": ["Hypertrophy", "Hyperplasia", "Metaplasia", "Necrosis"],
+       "e": "Hypertrophy = increase in cell or organ size, usually due to engorgement by intracellular parasites, e.g. P. vivax."},
+      {"q": "In Paragonimus westermani (lung fluke) infection, the parasite is surrounded by a host capsule of fibrocytes transformed from other cell types. This is:",
+       "o": ["Metaplasia", "Neoplasia", "Hyperplasia", "Fatty degeneration"],
+       "e": "Metaplasia = one type of tissue converted into another without the intervention of embryonic tissue, e.g. Paragonimus westermani."},
+      {"q": "Schistosoma haematobium is sometimes associated with malignant neoplasia of the:",
+       "o": ["Urinary bladder", "Liver", "Lung", "Bile duct"],
+       "e": "Neoplasia: S. haematobium (human blood fluke) is associated with malignant neoplasia of the urinary bladder."},
+      {"q": "According to the classification of amebae, all intestinal amebae are nonpathogenic except:",
+       "o": ["Entamoeba histolytica", "Entamoeba coli", "Entamoeba gingivalis", "Endolimax nana"],
+       "e": "All intestinal amebae are nonpathogenic except E. histolytica. All free-living amebae (Naegleria, Acanthamoeba, Balamuthia) are opportunistic pathogens."}
+    ]
+  },
+  {
+    "id": "l5", "group": "theory", "tag": "نظري م5",
+    "title": "Entamoeba histolytica",
+    "desc": "الأطوار، دورة الحياة، الإمراضية، التشخيص، العلاج",
+    "questions": [
+      {"q": "Which form of E. histolytica is the only form present in tissues?",
+       "o": ["Trophozoite", "Precyst", "Cyst", "Metacyst"],
+       "e": "The trophozoite is the vegetative (growing) stage and the only form present in tissues. Size 12–60 µm, average 20 µm."},
+      {"q": "The infective form of E. histolytica is:",
+       "o": ["Mature quadrinucleate cyst", "Trophozoite", "Precyst", "Uninucleate early cyst"],
+       "e": "Infective form: mature quadrinucleate cyst passed in the feces of convalescents and carriers. Cysts stay viable about 10 days in moist conditions."},
+      {"q": "Which feature of E. histolytica trophozoites is diagnostic, because it is not found in any other commensal intestinal amebae?",
+       "o": ["Phagocytosed red blood cells", "Ingested bacteria in vacuoles", "Eight nuclei in the mature cyst", "Blot-like karyosome"],
+       "e": "Trophozoites from acute dysenteric stools often contain phagocytosed RBCs. This is diagnostic."},
+      {"q": "Encystment of E. histolytica occurs in:",
+       "o": ["The intestinal lumen only", "The tissues", "Feces outside the body", "The liver"],
+       "e": "Encystment occurs in the intestinal lumen. It does not occur in the tissues nor in feces outside the body."},
+      {"q": "Excystation of E. histolytica occurs when the cyst reaches:",
+       "o": ["The cecum or lower part of the ileum", "The stomach, by the action of gastric juice", "The duodenum, by the action of bile", "The rectum, before passage in feces"],
+       "e": "In the cecum or lower ileum, the alkaline medium lets trypsin damage the cyst wall. The wall resists gastric juice, so cysts pass the stomach undamaged."},
+      {"q": "The nuclei of the metacyst divide to form how many amebulae (metacystic trophozoites)?",
+       "o": ["8", "4", "2", "16"],
+       "e": "The quadrinucleate metacyst's nuclei divide to form 8 nuclei → 8 small amebulae (metacystic trophozoites)."},
+      {"q": "Adherence of E. histolytica to the glycogen receptors of the colonic mucosa is mediated by:",
+       "o": ["Gal/GalNAc lectin (260 kDa)", "Ameba pores (ionophore proteins)", "Trypsin in an alkaline medium", "Chromatoid bodies of the cyst"],
+       "e": "Steps: 1 Adherence (Gal/GalNAc lectin) → 2 Cytolysis → 3 Ameba pores (lyse host cells) → 4 Tissue necrosis → 5 Mucosa penetration → 6 Amebic ulcer."},
+      {"q": "The most common extraintestinal complication of amebiasis is:",
+       "o": ["Hepatic involvement (amebic liver abscess)", "Pulmonary amebiasis (lung abscess)", "Cutaneous amebiasis around the anus", "Genitourinary amebiasis (urinary tract)"],
+       "e": "Hepatic involvement is the most common extraintestinal complication. Pulmonary amebiasis is very rare."},
+      {"q": "The incubation period of E. histolytica ranges, on average, from:",
+       "o": ["4 days to 4 months", "4 hours to 4 days", "1 to 2 weeks only", "4 months to 4 years"],
+       "e": "The incubation period is highly variable: on average 4 days to 4 months."},
+      {"q": "For amebic colitis or amebic liver abscess, tinidazole is given as:",
+       "o": ["2 g/day orally for 3 days", "750 mg three times a day for 5–10 days", "650 mg orally three times a day for 20 days", "30 mg/kg for 5–10 days"],
+       "e": "Colitis/liver abscess: tinidazole 2 g/day × 3 days; metronidazole 750 mg TID × 5–10 days. Intestinal amebiasis: paromomycin 30 mg/kg × 5–10 days; iodoquinol 650 mg TID × 20 days."}
+    ]
+  },
+  {
+    "id": "lab1", "group": "lab", "tag": "عملي م1",
+    "title": "Parasites, Hosts & Stains",
+    "desc": "أنواع الطفيليات والعوائل، دورة الحياة، الصبغات",
+    "questions": [
+      {"q": "A parasite that wanders into an organ in which it is not usually found (e.g. E. histolytica in the liver or lung) is called:",
+       "o": ["Erratic parasite", "Accidental parasite", "Facultative parasite", "Obligatory parasite"],
+       "e": "Erratic parasite wanders into an organ where it is not usually found, e.g. E. histolytica in the liver or lung of humans."},
+      {"q": "Which of the following is an example of a facultative parasite?",
+       "o": ["Acanthamoeba spp.", "Plasmodium spp.", "Hymenolepis diminuta", "Toxoplasma gondii"],
+       "e": "Facultative parasites can live free or as parasites, e.g. Acanthamoeba spp. Plasmodium is an obligatory parasite."},
+      {"q": "Hymenolepis diminuta (rat tapeworm) infecting a human is an example of:",
+       "o": ["Accidental parasite", "Erratic parasite", "Obligatory parasite", "Ectoparasite"],
+       "e": "Accidental parasite: attacks an unnatural host and survives, e.g. H. diminuta."},
+      {"q": "Toxoplasma gondii is an example of:",
+       "o": ["Intracellular endoparasite", "Extracellular endoparasite", "Ectoparasite", "Facultative parasite"],
+       "e": "Endoparasites live inside the host: intracellular e.g. T. gondii; extracellular e.g. E. histolytica. Ectoparasites: lice, ticks, mites."},
+      {"q": "The host in which the parasite reaches its sexual maturity (harbors the adult parasite) is the:",
+       "o": ["Essential (final) host", "Intermediate host", "Reservoir host", "Carrier host"],
+       "e": "Essential (final) host: the parasite reaches sexual maturity, i.e. the adult parasite exists in it."},
+      {"q": "The host in which the larval stage grows (non-sexual reproduction of the parasite happens) is the:",
+       "o": ["Intermediate host", "Essential (final) host", "Accidental host", "Reservoir host"],
+       "e": "Intermediate host: the larval stage grows in it, meaning non-sexual reproduction happens."},
+      {"q": "A host that makes the parasite available for transmission to another host and is usually not affected by the infection is the:",
+       "o": ["Reservoir host", "Carrier host", "Accidental host", "Intermediate host"],
+       "e": "Reservoir host: makes the parasite available for transmission and is usually not affected by the infection."},
+      {"q": "A person who hosts the infective stage of a parasite, with or without symptoms, and is a source of infection is a:",
+       "o": ["Carrier host", "Reservoir host", "Essential (final) host", "Accidental host"],
+       "e": "Carrier host: hosts the infective stage with or without symptoms and is a source of infection."},
+      {"q": "Giemsa, Leishman's and Field's stains are used for:",
+       "o": ["Blood-parasitic protozoa", "Intestine-parasitic protozoa", "Helminth eggs in stool", "Tape technique slides"],
+       "e": "Blood protozoa: Giemsa, Leishman's, Field's. Intestinal protozoa: Iodine and 1% Eosin."},
+      {"q": "An indirect life cycle requires:",
+       "o": ["Two or more hosts", "Only one host", "No host", "Only a vector"],
+       "e": "Direct life cycle: only one host. Indirect life cycle: two or more hosts."}
+    ]
+  },
+  {
+    "id": "lab2", "group": "lab", "tag": "عملي م2",
+    "title": "Sources of Infection & GSE",
+    "desc": "مصادر العدوى، المراحل المعدية، تأثير الطفيلي، فحص البراز العام",
+    "questions": [
+      {"q": "Eating measly pork containing infective larvae is a food source of infection with:",
+       "o": ["Trichinella spiralis", "Toxoplasma gondii", "Ascaris lumbricoides", "Naegleria spp."],
+       "e": "Food: (A) contamination with feces, e.g. Toxoplasma oocysts; (B) meat containing infective larvae, e.g. measly pork, Trichinella spiralis."},
+      {"q": "Free-living parasites in water that may enter the body through vulnerable sites, e.g.:",
+       "o": ["Naegleria spp.", "Cysts of Entamoeba histolytica", "Cercariae of schistosomes", "Eggs of Ascaris lumbricoides"],
+       "e": "Water: E. histolytica cysts are swallowed; schistosome cercariae penetrate exposed skin; free-living Naegleria enters through vulnerable sites."},
+      {"q": "Infective larvae present in soil that enter by penetrating exposed skin, e.g.:",
+       "o": ["Strongyloides stercoralis", "Ascaris lumbricoides", "Toxoplasma gondii", "Trichinella spiralis"],
+       "e": "Soil: Ascaris embryonated eggs are ingested; Strongyloides stercoralis larvae penetrate exposed skin."},
+      {"q": "Fish is the animal source of infection for:",
+       "o": ["Diphyllobothrium latum", "Echinococcus granulosus", "Toxoplasma gondii", "Trichinella spiralis"],
+       "e": "Dog → Echinococcus granulosus (hydatid disease). Cat → Toxoplasma gondii. Fish → D. latum (fish tapeworm)."},
+      {"q": "External autoinfection (finger to mouth transmission) is seen in:",
+       "o": ["Pinworm", "Strongyloides stercoralis", "Ascaris lumbricoides", "Schistosoma spp."],
+       "e": "External autoinfection: pinworm. Internal autoinfection: Strongyloides stercoralis."},
+      {"q": "In protozoa that have only a trophozoite stage, the trophozoite represents the adult and infective stage. Example:",
+       "o": ["Trichomonas vaginalis", "Entamoeba histolytica", "Ascaris lumbricoides", "Fasciola hepatica"],
+       "e": "Infective stages: cyst (protozoa), adult/trophozoite (T. vaginalis), egg (Ascaris), larvae (Ancylostoma, Schistosoma, Wuchereria, Taenia, Fasciola)."},
+      {"q": "Larvae found on plants as metacercariae are the infective stage of:",
+       "o": ["Fasciola hepatica", "Taenia spp.", "Ancylostoma duodenale", "Wuchereria bancrofti"],
+       "e": "Ancylostoma: soil, penetrates skin. Wuchereria: in blood, insect bite. Taenia: cystic in animal meat. Fasciola hepatica: metacercaria on plants."},
+      {"q": "D. latum absorbs vitamin B12 and can cause anemia. This is an example of:",
+       "o": ["Competition for the host's nutrients", "Destruction of host tissues", "Toxins and secretions", "Tissue changes"],
+       "e": "Effects on host: competition for nutrients (D. latum), destruction of tissues (swimmer's itch, Entamoeba), toxins and secretions (mosquito saliva), tissue changes."},
+      {"q": "For General Stool Examination (GSE), how much stool is collected?",
+       "o": ["10–15 gm", "1–2 gm", "30–40 gm", "50–100 gm"],
+       "e": "Collect about 10–15 gm of stool in a dry, clean container. If not possible, use a cotton wool swab in the rectum for about 10 sec."},
+      {"q": "In the microscopic GSE, if the specimen is watery or contains mucus:",
+       "o": ["The examination is preferably done without saline", "Iodine must be added before saline", "Extra saline is added to dilute it", "It is examined under 100X only"],
+       "e": "Normally stool is mixed with a drop of saline; watery or mucoid specimens are preferably examined without saline, under 10X and 40X."}
+    ]
+  },
+  {
+    "id": "lab3", "group": "lab", "tag": "عملي م3",
+    "title": "Classification of Protozoa & E. histolytica",
+    "desc": "تصنيف الأوليات، histolytica في العملي، المسحة المباشرة",
+    "questions": [
+      {"q": "Giardia lamblia, Trichomonas vaginalis, Trypanosoma cruzi and Leishmania donovani belong to:",
+       "o": ["Mastigophora (Flagellates)", "Sarcodina (Amoebae)", "Sporozoa (Coccidian)", "Ciliates (B. coli group)"],
+       "e": "Sarcodina: E. histolytica, E. coli, E. nana, E. gingivalis. Mastigophora: Giardia, Trichomonas, T. cruzi, L. donovani. Sporozoa: P. falciparum, T. gondii, C. parvum. Ciliates: B. coli."},
+      {"q": "Which of the following is classified under Sporozoa?",
+       "o": ["Cryptosporidium parvum", "Giardia lamblia", "Balantidium coli", "Endolimax nana"],
+       "e": "Sporozoa: Plasmodium falciparum, Toxoplasma gondii, Cryptosporidium parvum. Balantidium coli is the ciliate."},
+      {"q": "According to the lab lecture, E. histolytica has:",
+       "o": ["Four stages: trophozoite, precyst, cyst, metacyst", "Four stages: trophozoite, cyst, egg, larva", "Three stages: trophozoite, precyst, cyst", "Two stages: trophozoite and cyst only"],
+       "e": "The lab lists 4 stages (adds the metacyst). Note: the theory lecture lists 3 forms (trophozoite, precyst, cyst)."},
+      {"q": "The infective stage of E. histolytica is:",
+       "o": ["Tetranucleated cyst (4 nuclei)", "Motile trophozoite with RBCs", "Precyst (round, 10–20 µm)", "Binucleated immature cyst"],
+       "e": "Infective stage: tetranucleated cyst. Mode of transmission: ingestion of the mature cyst in contaminated food or water."},
+      {"q": "The diagnostic stage of E. histolytica is:",
+       "o": ["Motile trophozoite and cyst", "Metacyst and amebulae only", "Precyst and metacyst only", "Eggs and larvae in stool"],
+       "e": "Diagnostic stage: motile trophozoite and cyst."},
+      {"q": "Intestinal amoebiasis is diagnosed by direct microscopic examination of the stool to recover:",
+       "o": ["Motile trophozoites containing red cells", "Trophozoites containing bacteria only", "Cysts with 8 nuclei", "Eggs with a thick shell"],
+       "e": "Motile trophozoites containing red cells are diagnostic of amoebic dysentery. Cysts with 8 nuclei are E. coli."},
+      {"q": "Extra-intestinal amoebiasis is diagnosed in the lab mainly by:",
+       "o": ["Immunological tests (ELISA, IHA, IIF)", "Direct wet smear of the stool", "Tape technique around the anus", "Iodine-stained stool smear"],
+       "e": "Extra-intestinal: immunologically based procedures: antigen tests, ELISA, indirect hemagglutination (IHA), indirect immunofluorescence (IIF)."},
+      {"q": "The cytoplasmic inclusions of the E. histolytica cyst are:",
+       "o": ["Chromatoid bars and a glycogen mass", "Ingested red blood cells", "Ingested bacteria in vacuoles", "Food vacuoles with leukocytes"],
+       "e": "Cyst: chromatoid bars and diffuse glycogen mass in younger cysts. Trophozoite: ingested RBCs."},
+      {"q": "The karyosome and peripheral chromatin of E. histolytica are:",
+       "o": ["Small, central karyosome; fine, evenly distributed chromatin", "Large, eccentric karyosome; coarse, irregular chromatin", "Blot-like karyosome; no peripheral chromatin", "Large, irregular karyosome; no peripheral chromatin"],
+       "e": "E. histolytica: small central karyosome, fine even chromatin. E. coli: large eccentric karyosome, coarse irregular chromatin. E. nana: blot-like karyosome, no peripheral chromatin."},
+      {"q": "In the direct smear (Experiment 1), the smear is examined under:",
+       "o": ["10X then 40X", "40X then 100X oil immersion", "100X only", "4X only"],
+       "e": "Direct smear: stool + water or normal saline, mixed with a stick, cover slip, examined by 10X then 40X. Advantages: short time, minimal equipment and cost."}
+    ]
+  },
+  {
+    "id": "lab5", "group": "lab", "tag": "عملي م5",
+    "title": "Nonpathogenic Amoebae",
+    "desc": "E. coli و E. gingivalis و Endolimax nana",
+    "questions": [
+      {"q": "The mature cyst of Entamoeba coli contains:",
+       "o": ["8 nuclei", "4 nuclei", "2 nuclei", "1 nucleus"],
+       "e": "E. coli mature cyst: 8 nuclei. E. histolytica and E. nana mature cysts: 4 nuclei."},
+      {"q": "Chromatoid bodies of E. coli (seen only in immature cysts) are:",
+       "o": ["Slender rods with sharp ends", "Cigar-shaped rods with rounded ends", "Absent", "Blot-like masses"],
+       "e": "E. coli: slender rods with sharp ends. E. histolytica: cigar-shaped with rounded ends."},
+      {"q": "The karyosome of the E. coli trophozoite is:",
+       "o": ["Large, irregular, eccentric", "Small and central", "Blot-like", "Absent"],
+       "e": "E. coli nucleus: thick membrane lined with coarse, irregularly distributed chromatin; large, irregular, eccentric karyosome."},
+      {"q": "The cytoplasm of the E. coli trophozoite occasionally contains ingested:",
+       "o": ["Bacteria", "Red blood cells", "Leukocytes only", "Glycogen mass"],
+       "e": "E. coli occasionally contains ingested bacteria. Ingested RBCs are the diagnostic feature of E. histolytica."},
+      {"q": "Although E. coli is nonpathogenic, its presence in stool suggests:",
+       "o": ["Ingestion of contaminated food or drink", "Invasive amoebic dysentery", "Amoebic liver abscess", "Tissue invasion"],
+       "e": "E. coli does not invade tissues; its presence suggests ingestion of contaminated food or drink."},
+      {"q": "Entamoeba gingivalis is characterized by:",
+       "o": ["Trophozoite stage only, found in the mouth (teeth roots and gum)", "Cyst with 4 nuclei, found in the large intestine", "Cyst with 8 nuclei, found in the large intestine", "Trophozoite stage only, found in the large intestine"],
+       "e": "E. gingivalis: only trophozoite, found in the mouth (teeth roots and gum), highly vacuolated, non-pathogenic."},
+      {"q": "E. gingivalis is found with what percentage of gum diseases?",
+       "o": ["95%", "50%", "25%", "10%"],
+       "e": "E. gingivalis is found with 95% of gum diseases."},
+      {"q": "The trophozoite of Endolimax nana measures:",
+       "o": ["6–15 µm", "20–30 µm", "8–20 µm", "12–60 µm"],
+       "e": "E. nana 6–15 µm; E. coli 20–30 µm; E. gingivalis 8–20 µm; E. histolytica 12–60 µm (theory)."},
+      {"q": "The nucleus of Endolimax nana shows:",
+       "o": ["A large blot-like karyosome with no peripheral chromatin", "A small central karyosome with fine, even chromatin", "A large eccentric karyosome with coarse, irregular chromatin", "A central karyosome with a cartwheel appearance"],
+       "e": "E. nana: large pleomorphic (blot-like) karyosome, sometimes split into masses; thin nuclear membrane without attached chromatin."},
+      {"q": "Which amoebae are morphologically identical to E. histolytica but differ biochemically and genetically?",
+       "o": ["E. dispar and E. moshkovskii", "E. coli and E. hartmanni", "E. gingivalis and Endolimax nana", "Naegleria fowleri and Acanthamoeba culbertsoni"],
+       "e": "E. histolytica, E. dispar and E. moshkovskii are morphologically identical. Naegleria fowleri and Acanthamoeba culbertsoni are free-living amoebae."}
+    ]
+  }
+]
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var DATA = JSON.parse(document.getElementById("quiz-data").textContent);
+  var LETTERS = ["A", "B", "C", "D", "E"];
+  var STORE_KEY = "med-parasites-best";
+
+  var $ = function (id) { return document.getElementById(id); };
+  var views = { home: $("home"), quiz: $("quiz"), result: $("result") };
+
+  var state = { lec: null, items: [], answers: [], idx: 0, filter: "all" };
+
+  function readBest() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || "{}") || {}; } catch (e) { return {}; }
+  }
+  function saveBest(id, score) {
+    try {
+      var b = readBest();
+      if (b[id] == null || score > b[id]) { b[id] = score; localStorage.setItem(STORE_KEY, JSON.stringify(b)); }
+    } catch (e) {}
+  }
+
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function show(name) {
+    Object.keys(views).forEach(function (k) { views[k].hidden = k !== name; });
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Home ---------- */
+  function renderHome() {
+    var best = readBest();
+    var gT = $("grid-theory"), gL = $("grid-lab");
+    gT.innerHTML = ""; gL.innerHTML = "";
+    DATA.forEach(function (lec) {
+      var c = el("button", "card");
+      c.type = "button";
+      var head = el("div", "card-head");
+      head.appendChild(el("span", "tag", lec.tag));
+      var b = el("span", "best");
+      if (best[lec.id] != null) {
+        b.appendChild(document.createTextNode("أفضل نتيجة: "));
+        var s = el("b", "en", best[lec.id] + "/" + lec.questions.length);
+        b.appendChild(s);
+      } else {
+        b.textContent = lec.questions.length + " أسئلة";
+      }
+      head.appendChild(b);
+      c.appendChild(head);
+      var t = el("div", "card-title en", lec.title);
+      t.lang = "en";
+      c.appendChild(t);
+      c.appendChild(el("div", "card-desc", lec.desc));
+      c.addEventListener("click", function () { go(lec.id); });
+      (lec.group === "theory" ? gT : gL).appendChild(c);
+    });
+    show("home");
+  }
+
+  /* ---------- Quiz ---------- */
+  function startQuiz(lec) {
+    state.lec = lec;
+    state.items = shuffle(lec.questions).map(function (q) {
+      var opts = q.o.map(function (text, i) { return { text: text, correct: i === 0 }; });
+      return { q: q.q, e: q.e, opts: shuffle(opts) };
+    });
+    state.answers = state.items.map(function () { return null; });
+    state.idx = 0;
+    state.filter = "all";
+    $("qTag").textContent = lec.tag;
+    $("qTitle").textContent = lec.title;
+    renderDots();
+    renderQuestion();
+    show("quiz");
+  }
+
+  function answeredCount() {
+    return state.answers.filter(function (a) { return a !== null; }).length;
+  }
+
+  function renderDots() {
+    var d = $("dots");
+    d.innerHTML = "";
+    state.items.forEach(function (_, i) {
+      var b = el("button", "dot", String(i + 1));
+      b.type = "button";
+      b.setAttribute("aria-label", "السؤال " + (i + 1));
+      b.addEventListener("click", function () { state.idx = i; renderQuestion(); });
+      d.appendChild(b);
+    });
+  }
+
+  function updateChrome() {
+    var n = state.items.length, done = answeredCount();
+    $("qCount").textContent = "السؤال " + (state.idx + 1) + " من " + n;
+    $("qAnswered").textContent = "أجبت عن " + done + " من " + n;
+    $("qBar").style.width = (done / n * 100) + "%";
+    Array.prototype.forEach.call($("dots").children, function (b, i) {
+      b.classList.toggle("done", state.answers[i] !== null);
+      b.classList.toggle("cur", i === state.idx);
+      if (i === state.idx) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current");
+    });
+    $("prevBtn").disabled = state.idx === 0;
+    $("nextBtn").disabled = state.idx === n - 1;
+    var all = done === n;
+    $("submitBtn").disabled = !all;
+    $("submitHint").textContent = all ? "" : "تظهر النتيجة بعد الإجابة عن كل الأسئلة (" + (n - done) + " متبقية)";
+  }
+
+  function renderQuestion() {
+    var item = state.items[state.idx];
+    $("qText").textContent = item.q;
+    var box = $("opts");
+    box.innerHTML = "";
+    item.opts.forEach(function (o, i) {
+      var b = el("button", "opt");
+      b.type = "button";
+      b.lang = "en";
+      b.setAttribute("aria-pressed", state.answers[state.idx] === i ? "true" : "false");
+      b.appendChild(el("span", "letter", LETTERS[i]));
+      b.appendChild(el("span", "", o.text));
+      b.addEventListener("click", function () { choose(i); });
+      box.appendChild(b);
+    });
+    updateChrome();
+  }
+
+  var advanceTimer = null;
+  function choose(i) {
+    var first = state.answers[state.idx] === null;
+    state.answers[state.idx] = i;
+    Array.prototype.forEach.call($("opts").children, function (b, k) {
+      b.setAttribute("aria-pressed", k === i ? "true" : "false");
+    });
+    updateChrome();
+    clearTimeout(advanceTimer);
+    if (first) {
+      var next = nextUnanswered();
+      if (next !== -1) {
+        advanceTimer = setTimeout(function () { state.idx = next; renderQuestion(); }, 280);
+      } else {
+        advanceTimer = setTimeout(function () { $("submitBtn").focus(); }, 150);
+      }
+    }
+  }
+
+  function nextUnanswered() {
+    var n = state.items.length;
+    for (var s = 1; s <= n; s++) {
+      var k = (state.idx + s) % n;
+      if (state.answers[k] === null) return k;
+    }
+    return -1;
+  }
+
+  /* ---------- Results ---------- */
+  function finish() {
+    if (answeredCount() !== state.items.length) return;
+    var score = 0;
+    state.items.forEach(function (it, i) { if (it.opts[state.answers[i]].correct) score++; });
+    saveBest(state.lec.id, score);
+    state.score = score;
+    state.filter = "all";
+    renderResult();
+    history.replaceState(null, "", "#" + state.lec.id + "/result");
+    show("result");
+  }
+
+  function message(score, n) {
+    var p = score / n;
+    if (p === 1) return ["علامة كاملة!", "أتقنت هذه المحاضرة."];
+    if (p >= 0.8) return ["ممتاز", "راجع الأسئلة الخاطئة فقط."];
+    if (p >= 0.6) return ["جيد", "راجع الأخطاء وأعد الاختبار."];
+    return ["تحتاج مراجعة", "ارجع لملف المحاضرة ثم أعد الاختبار."];
+  }
+
+  function renderResult() {
+    var n = state.items.length, score = state.score;
+    var pct = Math.round(score / n * 100);
+    $("rTag").textContent = state.lec.tag;
+    $("rTitle").textContent = state.lec.title;
+    $("rScore").textContent = score + "/" + n;
+    $("rPct").textContent = pct + "%";
+    var ring = $("ring");
+    ring.style.setProperty("--p", pct);
+    ring.style.setProperty("--ring-color", pct >= 60 ? "var(--ok)" : "var(--bad)");
+    var m = message(score, n);
+    $("rMsg").textContent = m[0];
+    $("rSub").textContent = m[1];
+    var wrong = n - score;
+    $("chipWrong").textContent = "الأخطاء فقط (" + wrong + ")";
+    Array.prototype.forEach.call(document.querySelectorAll(".chip"), function (c) {
+      c.setAttribute("aria-pressed", c.getAttribute("data-f") === state.filter ? "true" : "false");
+    });
+    renderReview();
+  }
+
+  function renderReview() {
+    var box = $("review");
+    box.innerHTML = "";
+    var shown = 0;
+    state.items.forEach(function (it, i) {
+      var picked = state.answers[i];
+      var ok = it.opts[picked].correct;
+      if (state.filter === "wrong" && ok) return;
+      shown++;
+      var card = el("article", "ritem" + (ok ? "" : " wrong"));
+      var head = el("div", "rhead");
+      head.appendChild(el("span", "", "السؤال " + (i + 1)));
+      head.appendChild(el("span", "badge " + (ok ? "ok" : "bad"), ok ? "صحيحة" : "خاطئة"));
+      card.appendChild(head);
+      var q = el("p", "rq en", it.q); q.lang = "en";
+      card.appendChild(q);
+      var ul = el("ul", "rlist"); ul.lang = "en";
+      it.opts.forEach(function (o, k) {
+        var cls = o.correct ? "correct" : (k === picked ? "picked-wrong" : "plain");
+        var li = el("li", cls);
+        li.appendChild(el("span", "mk", o.correct ? "✓" : (k === picked ? "✗" : LETTERS[k])));
+        li.appendChild(el("span", "txt", o.text));
+        if (k === picked) li.appendChild(el("span", "who", "إجابتك"));
+        else if (o.correct) li.appendChild(el("span", "who", "الصحيحة"));
+        ul.appendChild(li);
+      });
+      card.appendChild(ul);
+      var ex = el("div", "ex"); ex.lang = "en";
+      ex.appendChild(el("b", "", "Explanation: "));
+      ex.appendChild(document.createTextNode(it.e));
+      card.appendChild(ex);
+      box.appendChild(card);
+    });
+    if (!shown) box.appendChild(el("p", "empty", "لا توجد أخطاء. أحسنت!"));
+  }
+
+  /* ---------- Routing ---------- */
+  function findLec(id) {
+    for (var i = 0; i < DATA.length; i++) if (DATA[i].id === id) return DATA[i];
+    return null;
+  }
+  function go(id) { location.hash = id; }
+  function route() {
+    var h = location.hash.replace(/^#/, "");
+    var id = h.split("/")[0];
+    var lec = findLec(id);
+    if (!lec) { state.lec = null; renderHome(); return; }
+    if (h.indexOf("/result") > -1 && state.lec === lec && state.score != null && answeredCount() === state.items.length) {
+      show("result"); return;
+    }
+    startQuiz(lec);
+  }
+
+  /* ---------- Events ---------- */
+  $("prevBtn").addEventListener("click", function () { if (state.idx > 0) { state.idx--; renderQuestion(); } });
+  $("nextBtn").addEventListener("click", function () { if (state.idx < state.items.length - 1) { state.idx++; renderQuestion(); } });
+  $("submitBtn").addEventListener("click", finish);
+  $("quitBtn").addEventListener("click", function () { location.hash = ""; });
+  $("homeBtn").addEventListener("click", function () { location.hash = ""; });
+  $("backBtn").addEventListener("click", function () { location.hash = ""; });
+  $("retryBtn").addEventListener("click", function () {
+    state.score = null;
+    history.replaceState(null, "", "#" + state.lec.id);
+    startQuiz(state.lec);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".chip"), function (c) {
+    c.addEventListener("click", function () {
+      state.filter = c.getAttribute("data-f");
+      Array.prototype.forEach.call(document.querySelectorAll(".chip"), function (x) {
+        x.setAttribute("aria-pressed", x === c ? "true" : "false");
+      });
+      renderReview();
+    });
+  });
+  document.addEventListener("keydown", function (ev) {
+    if (views.quiz.hidden) return;
+    var k = ev.key;
+    if (/^[1-4]$/.test(k)) { choose(Number(k) - 1); }
+    else if (/^[a-dA-D]$/.test(k)) { choose(k.toUpperCase().charCodeAt(0) - 65); }
+  });
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+</body>
+</html>
